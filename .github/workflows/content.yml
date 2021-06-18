@@ -1,0 +1,21 @@
+# .github/workflows/content.yml
+name: CI (core)
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+    paths: ["epub33/core/**", "epub33/common/**"]
+jobs:
+  main:
+    name: Publish EPUB 33 Content 
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: w3c/spec-prod@v2
+        with:
+          SOURCE: ./epub33/core/
+          W3C_ECHIDNA_TOKEN: ${{ secrets.W3C_TR_TOKEN_CONTENT }}
+          W3C_WG_DECISION_URL: https://www.w3.org/publishing/groups/epub-wg/Meetings/Minutes/2020-11-20-epub#resolution2
+          W3C_BUILD_OVERRIDE: |
+             shortName: epub-33
+             specStatus: WD
