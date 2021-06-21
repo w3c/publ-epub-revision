@@ -1,0 +1,23 @@
+# .github/workflows/epub-a11y-11.yml
+name: CI (EPUB Accessibility)
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+    paths: 
+      - "epub33/a11y/**"
+      - "epub33/common/**"
+jobs:
+  main:
+    name: Publish EPUB Accessibility 1.1 
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: w3c/spec-prod@v2
+        with:
+          SOURCE: epub33/a11y/
+          W3C_ECHIDNA_TOKEN: ${{ secrets.W3C_TR_TOKEN_A11Y }}
+          W3C_WG_DECISION_URL: https://www.w3.org/publishing/groups/epub-wg/Meetings/Minutes/2021-02-12-epub#resolution2
+          W3C_BUILD_OVERRIDE: |
+             shortName: epub-a11y-11/
+             specStatus: WD
