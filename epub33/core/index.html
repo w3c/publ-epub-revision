@@ -7169,16 +7169,19 @@ store destination as source in ocf
 
 					<section id="sec-media-overlays-fragids">
 						<h5>Referencing Document Fragments</h5>
+
 						<p>The <code>epub:textref</code> attribute and the <a href="#elemdef-smil-text"
 									><code>text</code> element's</a>
 							<code>src</code> attribute both require a fragment identifier that references a specific
 							fragment (e.g., an element or text string) of the associated <a>EPUB Content
 							Document</a>.</p>
+
 						<p>For XHTML and SVG Content Documents, the fragment SHOULD be a reference to a <a
 								href="https://html.spec.whatwg.org/multipage/browsing-the-web.html#target-element"
 								>target element</a> [[HTML]] or an <a
 								href="https://www.w3.org/TR/SVG2/linking.html#SVGFragmentIdentifiers">SVG Fragment
 								Identifier</a> [[SVG]], respectively.</p>
+
 						<p>EPUB Creators MAY use other fragment identifier schemes, but Reading Systems may not support
 							such identifiers.</p>
 					</section>
@@ -7203,7 +7206,7 @@ store destination as source in ocf
 							supported.</p>
 					</section>
 
-					<section id="sec-audio-video">
+					<section id="sec-embedded-media">
 						<h5>Embedded Media</h5>
 
 						<p>Any <a>EPUB Content Document</a> associated with a Media Overlay MAY contain embedded media
@@ -7211,16 +7214,35 @@ store destination as source in ocf
 								href="#elemdef-smil-text"><code>text</code> element</a> in such instances to reference
 							the embedded media by its element's <code>id</code> attribute value.</p>
 
-						<p>When a <code>text</code> element references embedded media that contains audio, the <a
-								href="#elemdef-smil-audio"><code>audio</code></a> sibling element is OPTIONAL.</p>
+						<section id="sec-emb-audio-video">
+							<h6>Embedded Audio and Video</h6>
 
-						<p><a>EPUB Creators</a> SHOULD avoid using scripts to control playback of referenced embedded
-							EPUB Content Document media, as this might conflict with Media Overlays playback
-							behavior.</p>
+							<p>When a <code>text</code> element references embedded audio or video, the <a
+									href="#elemdef-smil-audio"><code>audio</code></a> sibling element is OPTIONAL.
+								Reading Systems will intiate playback of the media in the absence of an
+									<code>audio</code> element.</p>
 
-						<p>EPUB Creators should carefully examine any overlapping audio situations and deal with them at
-							the production stage, as Reading Systems handling of simultaneous volume levels is
-							optional.</p>
+							<p><a>EPUB Creators</a> SHOULD avoid using scripts to control playback of referenced
+								embedded EPUB Content Document media, as this might conflict with Media Overlays
+								playback behavior.</p>
+
+							<p>EPUB Creators should carefully examine any overlapping audio situations and deal with
+								them at the production stage, as Reading Systems handling of simultaneous volume levels
+								is optional.</p>
+						</section>
+
+						<section id="sec-emb-img">
+							<h6>Embedded Images</h6>
+
+							<p>When a <code>text</code> element references an embedded image, the <a
+									href="#elemdef-smil-audio"><code>audio</code></a> sibling element is OPTIONAL. In
+								the absence of an <code>audio</code> element, Reading Systems will voice the image using
+									<a href="#sec-tts">Text-to-Speech rendering</a>.</p>
+
+							<p>EPUB Creators MUST ensure they provide fallback text for an image when an omitting an
+									<code>audio</code> element (e.g., using the [[HTML]] <code>alt</code>
+								attribute).</p>
+						</section>
 					</section>
 
 					<section id="sec-tts">
@@ -7232,11 +7254,10 @@ store destination as source in ocf
 
 						<p>A Media Overlay <a href="#elemdef-smil-par"><code>par</code> element</a> MAY omit an <a
 								href="#elemdef-smil-audio"><code>audio</code> element</a> when its <a
-								href="#elemdef-smil-text"><code>text</code> element</a> references a <a
-								href="#sec-audio-video">non-media element</a>. In these cases, Reading Systems are
-							expected to render the referenced fragment via TTS, so EPUB Creators MUST ensure the
-							fragment is appropriate for TTS rendering (e.g., contains a textual EPUB Content Document
-							element or has a text fallback).</p>
+								href="#elemdef-smil-text"><code>text</code> element</a> references text or an image. In
+							these cases, Reading Systems are expected to render the referenced fragment via TTS, so EPUB
+							Creators MUST ensure the fragment is appropriate for TTS rendering (e.g., contains a textual
+							EPUB Content Document element or has a text fallback).</p>
 
 						<div class="note">
 							<p>See <a>EPUB 3 Text-to-Speech Support</a> [[EPUB-TTS-10]] for more information about using
@@ -9350,8 +9371,10 @@ EPUB/images/cover.png</pre>
 				-->
 
 				<ul>
-					<li> 23-June-2021: Added the <code>base</code> element to the list of discouraged XHTML constructs.
-						See <a href="https://github.com/w3c/epub-specs/issues/1699">issue 1699</a>. </li>
+					<li>08-July-2021: Clarified TTS handling of images in media overlays. See <a
+							href="https://github.com/w3c/epub-specs/issues/1745">issue 1745</a>.</li>
+					<li>23-June-2021: Added the <code>base</code> element to the list of discouraged XHTML constructs.
+						See <a href="https://github.com/w3c/epub-specs/issues/1699">issue 1699</a>.</li>
 					<li>18-June-2021: Moved requirements for authoring SSML, PLS lexicons and CSS 3 Speech to the <a
 							href="https://www.w3.org/TR/epub-3-tts">EPUB 3 Text-to-Speech Enhancements</a> note. The
 						ability to use these technologies in EPUB 3 Publications remains unchanged. See <a
