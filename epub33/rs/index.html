@@ -1155,50 +1155,53 @@
 			<section id="sec-container-zip">
 				<h3>OCF ZIP Container</h3>
 
+				<p>A Reading System that supports the OCF Container:</p>
+
 				<ul class="conformance-list">
 					<li>
-						<p id="confreq-zip-mult">Reading Systems MUST treat any OCF Containers that specify the ZIP file
-							is split across multiple storage media as in error.</p>
+						<p id="confreq-zip-mult">MUST treat any OCF Containers that specify the ZIP file is split across
+							multiple storage media as in error.</p>
 					</li>
 					<li>
-						<p id="confreq-zip-comp">Reading Systems MUST treat any OCF Containers that use compression
-							techniques other than Deflate as in error.</p>
+						<p id="confreq-zip-comp">MUST treat any OCF Containers that use compression techniques other
+							than Deflate as in error.</p>
 					</li>
 					<li>
-						<p id="confreq-zip-64">Reading Systems MUST support the ZIP64 extensions defined as "Version
-							1".</p>
+						<p id="confreq-zip-64">MUST support the ZIP64 extensions defined as "Version 1".</p>
 					</li>
 					<li>
-						<p id="confreq-zip-enc">Reading Systems MUST treat OCF ZIP Containers that use ZIP encryption
-							features as in error.</p>
+						<p id="confreq-zip-enc">MUST treat OCF ZIP Containers that use ZIP encryption features as in
+							error.</p>
 					</li>
 					<li>
-						<p id="confreq-zip-preserve">Reading Systems do not have to preserve information from an OCF ZIP
-							Container through load and save operations outside the context of the OCF Abstract
-							Container. In particular, a Reading System does not have to preserve CRC values, comment
-							fields or fields that hold file system information corresponding to a particular operating
-							system (e.g., <em class="firstterm">External file attributes</em> and <em class="firstterm"
-								>Extra field</em>).</p>
+						<p id="confreq-zip-rootdir">MAY generate a physical directory for the <a>Root Directory</a> of
+							the OCF Abstract Container if it unzips the contents.</p>
+					</li>
+					<li>
+						<p id="confreq-zip-preserve">does not have to preserve information from an OCF ZIP Container
+							through load and save operations outside the context of the OCF Abstract Container. In
+							particular, a Reading System does not have to preserve CRC values, comment fields or fields
+							that hold file system information corresponding to a particular operating system (e.g., <em
+								class="firstterm">External file attributes</em> and <em class="firstterm">Extra
+								field</em>).</p>
 					</li>
 				</ul>
 
-				<p>The following constraints apply to specific fields in the OCF ZIP Container archive:</p>
+				<p>With respect to specific fields in the OCF ZIP Container archive, the Reading System:</p>
 
 				<ul class="conformance-list">
 					<li>
-						<p id="confreq-zip-fld-version">Reading Systems MUST treat <code>version needed to
-								extract</code> field values other than <code>10</code>, <code>20</code> or
-								<code>45</code> in the local file header table as being in error.</p>
+						<p id="confreq-zip-fld-version">MUST treat <code>version needed to extract</code> field values
+							other than <code>10</code>, <code>20</code> or <code>45</code> in the local file header
+							table as being in error.</p>
 					</li>
 					<li>
-						<p id="confreq-zip-fld-comp">Reading Systems MUST treat <code>compression</code> method field
-							values other than <code>0</code> or <code>8</code> in the local file header table as being
-							in error.</p>
+						<p id="confreq-zip-fld-comp">MUST treat <code>compression</code> method field values other than
+								<code>0</code> or <code>8</code> in the local file header table as being in error.</p>
 					</li>
 					<li>
-						<p id="confreq-zip-fld-er">Reading Systems MUST treat OCF ZIP Containers with an <code>Archive
-								decryption header</code> or an <code>Archive extra data record</code> as being in
-							error.</p>
+						<p id="confreq-zip-fld-er">MUST treat OCF ZIP Containers with an <code>Archive decryption
+								header</code> or an <code>Archive extra data record</code> as being in error.</p>
 					</li>
 				</ul>
 			</section>

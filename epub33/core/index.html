@@ -482,9 +482,8 @@
 					</dt>
 					<dd>
 						<p>The root directory represents the base of the <a>OCF Abstract Container</a> file system. This
-							directory is virtual in nature: an <a>EPUB Reading System</a> may or may not generate a
-							physical root directory for the contents of the OCF Abstract Container if it unzips the
-							contents.</p>
+							directory is <a href="https://www.w3.org/TR/epub-rs-33/#confreq-zip-rootdir">virtual in
+								nature</a>.</p>
 					</dd>
 					<dt>
 						<dfn id="dfn-scripted-content-document" data-lt="Scripted Content Documents">Scripted Content
@@ -5247,6 +5246,17 @@ Spine:
                 </pre>
 					</aside>
 
+					<p>EPUB Creators SHOULD NOT use <a href="https://url.spec.whatwg.org/#path-absolute-url-string"
+							>path-absolute-URL strings</a> [[URI]] (i.e., where the path begins with a single slash) to
+						reference resources in the OCF Abstract Container.</p>
+
+					<div class="note">
+						<p>The base of an EPUB Publication can change from Reading System to Reading Systems depending
+							on how the content is served. Some Reading Systems may treat the location of the package
+							document as the base of the EPUB Publication, for example, while others may use the <a>Root
+								Directory</a>.</p>
+					</div>
+
 					<p>The relevant language specification for a given file format determines the <a
 							href="https://url.spec.whatwg.org/#concept-base-url">base URL</a> [[URL]] used to parse <a
 							href="https://url.spec.whatwg.org/#relative-url-with-fragment-string"
@@ -9350,8 +9360,11 @@ EPUB/images/cover.png</pre>
 				-->
 
 				<ul>
-					<li> 23-June-2021: Added the <code>base</code> element to the list of discouraged XHTML constructs.
-						See <a href="https://github.com/w3c/epub-specs/issues/1699">issue 1699</a>. </li>
+					<li>28-June-2021: Recommended that EPUB Creators not use path-absolute-URL strings for referencing
+						resources due to the lack of a consistent root. See <a
+							href="https://github.com/w3c/epub-specs/issues/1681">issue 1681</a></li>
+					<li>23-June-2021: Added the <code>base</code> element to the list of discouraged XHTML constructs.
+						See <a href="https://github.com/w3c/epub-specs/issues/1699">issue 1699</a>.</li>
 					<li>18-June-2021: Moved requirements for authoring SSML, PLS lexicons and CSS 3 Speech to the <a
 							href="https://www.w3.org/TR/epub-3-tts">EPUB 3 Text-to-Speech Enhancements</a> note. The
 						ability to use these technologies in EPUB 3 Publications remains unchanged. See <a
