@@ -3589,6 +3589,21 @@ Spine:
 						<p>Use of the <code>trigger</code> element is <a href="#deprecated">deprecated</a>. Refer to its
 							definition in [[EPUBContentDocs-301]] for usage information.</p>
 					</section>
+
+					<section id="sec-xhtml-custom-attributes">
+						<h5>Custom Attributes</h5>
+
+						<p><a>EPUB Creators</a> MAY specify <a
+								href="https://www.w3.org/TR/epub-rs-33/#sec-xhtml-custom-attributes">custom
+								attributes</a> [[EPUB-RS-33]] in <a>XHTML Content Documents</a> to take advantage of
+								<a>Reading System</a>-specific functionality not defined in this specification.</p>
+
+						<p>Custom attributes MAY be specified on any element in an XHTML Content Document.</p>
+
+						<p>When using custom attributes, the content MUST remain consumable by a user without any
+							information loss or other significant deterioration, regardless of the Reading System it is
+							rendered on.</p>
+					</section>
 				</section>
 
 				<section id="sec-xhtml-deviations">
@@ -9343,6 +9358,9 @@ EPUB/images/cover.png</pre>
 				-->
 
 				<ul>
+					<li>09-July-2021: Restored the custom attributes section due to known usage but without reference to
+						the attribute registry. See <a href="https://github.com/w3c/epub-specs/issues/1602">issue
+							1602</a>.</li>
 					<li>05-July-2021: Removed the section on private use area characters from the XHTML restrictions.
 						The issues are more complex than what is covered and not in scope of EPUB to define. See <a
 							href="https://github.com/w3c/epub-specs/issues/1732">issue 1732</a>.</li>
